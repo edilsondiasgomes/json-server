@@ -16,6 +16,14 @@ const router = jsonServer.router('db.json')
 
 const middlewares = jsonServer.defaults()
 
+// Middleware para adicionar cabeçalhos CORS
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Permite todas as origens. Troque '*' por 'https://rentals-frontend-nine.vercel.app' para permitir apenas essa origem.
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 server.use(middlewares)
 // Add this before server.use(router)
 server.use(jsonServer.rewriter({

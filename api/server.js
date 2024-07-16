@@ -21,6 +21,10 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://rentals-frontend-nine.vercel.app'); // Permite todas as origens. Troque '*' por 'https://rentals-frontend-nine.vercel.app' para permitir apenas essa origem.
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+       // Tratar requisições OPTIONS
+    if (req.method === 'OPTIONS') {
+        return res.status(200).json({});
+    }
     next();
 });
 

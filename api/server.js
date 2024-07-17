@@ -1,8 +1,6 @@
 const jsonServer = require('json-server');
-const cors = require('cors');
 
 const server = jsonServer.create();
-server.use(cors());
 
 // Uncomment to allow write operations
 // const fs = require('fs')

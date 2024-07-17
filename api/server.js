@@ -17,9 +17,10 @@ const middlewares = jsonServer.defaults()
 
 // Middleware para adicionar cabeçalhos CORS
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://rentals-frontend-nine.vercel.app');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
     // Tratar requisições OPTIONS
     if (req.method === 'OPTIONS') {
         return res.status(200).json({});
